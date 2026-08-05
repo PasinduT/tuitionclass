@@ -1,0 +1,14 @@
+packages:
+  - .
+
+onlyBuiltDependencies:
+  - esbuild
+
+confirmModulesPurge: false
+
+# Keep project dependencies self-contained so CI and sandboxed builds do not
+# depend on pnpm's user-level global virtual store.
+enableGlobalVirtualStore: false
+
+allowBuilds:
+  esbuild: true

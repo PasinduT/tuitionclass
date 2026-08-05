@@ -1,0 +1,38 @@
+# Dependencies and package-manager state
+node_modules/
+.pnpm-store/
+pnpm-debug.log*
+
+# Build, test, and tool output
+dist/
+coverage/
+.vite/
+*.tsbuildinfo
+*.log
+
+# Local environment and secrets
+.env
+.env.*
+.envrc
+!.env.example
+!.env.*.example
+
+# Supabase local runtime state
+/backend/supabase/.branches/
+/backend/supabase/.temp/
+
+# Cloudflare local runtime state and secrets
+.wrangler/
+.dev.vars
+.dev.vars.*
+!.dev.vars.example
+
+# Editors
+.idea/
+*.swp
+*.swo
+*~
+
+# Operating systems
+.DS_Store
+Thumbs.db

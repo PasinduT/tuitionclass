@@ -1,0 +1,15 @@
+{
+  "name": "pahas-backend",
+  "private": true,
+  "packageManager": "pnpm@11.20.0",
+  "scripts": {
+    "supabase:start": "PATH=\"/Applications/Docker.app/Contents/Resources/bin:$PATH\" supabase start",
+    "supabase:stop": "PATH=\"/Applications/Docker.app/Contents/Resources/bin:$PATH\" supabase stop",
+    "supabase:status": "PATH=\"/Applications/Docker.app/Contents/Resources/bin:$PATH\" supabase status",
+    "db:reset": "PATH=\"/Applications/Docker.app/Contents/Resources/bin:$PATH\" supabase db reset",
+    "functions:serve": "PATH=\"/Applications/Docker.app/Contents/Resources/bin:$PATH\" supabase functions serve --env-file supabase/.env.local"
+  },
+  "devDependencies": {
+    "supabase": "^2.111.0"
+  }
+}
