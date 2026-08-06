@@ -96,12 +96,28 @@ export default function App() {
   const [session, setSession] = useState(null)
   const [welcome, setWelcome] = useState(() => sessionStorage.getItem('pahas-welcomed') !== 'yes')
   const closeWelcome = () => { sessionStorage.setItem('pahas-welcomed', 'yes'); setWelcome(false) }
-  useEffect(() => window.scrollTo(0, 0), [])
   useEffect(() => {
-    if (!supabase) return
-    supabase.auth.getSession().then(({ data }) => { setSession(data.session); setAuthReady(true) })
-    const { data } = supabase.auth.onAuthStateChange((_event, nextSession) => { setSession(nextSession); setAuthReady(true) })
-    return () => data.subscription.unsubscribe()
+    window.scrollTo(0, 0)
+  }, [])
+  useEffect(() => {
+    if (!supabase) return undefined
+
+    let active = true
+    supabase.auth.getSession().then(({ data }) => {
+      if (!active) return
+      setSession(data.session)
+      setAuthReady(true)
+    })
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, nextSession) => {
+      if (!active) return
+      setSession(nextSession)
+      setAuthReady(true)
+    })
+
+    return () => {
+      active = false
+      subscription.unsubscribe()
+    }
   }, [])
   if (!authReady) return <div className="grid min-h-screen place-items-center bg-paper text-sm font-bold text-slate-400">Checking your session…</div>
   if (supabase && !session && location.pathname !== '/login') return <Navigate to="/login" replace />

@@ -1,0 +1,1 @@
+"""Pahas FastAPI application package."""

@@ -5,7 +5,7 @@ Tuitionclass is a student-first Sri Lankan O/L Mathematics and Science practice 
 ## Project layout
 
 - `frontend/` — React, Tailwind CSS, and shadcn-style UI primitives
-- `backend/` — Supabase schema, RLS, Storage policies, and Gemini Edge Functions
+- `backend/` — FastAPI AI service plus the Supabase schema, RLS, and Storage policies
 
 ## Run the web app
 
@@ -27,6 +27,11 @@ cd backend
 pnpm supabase:start
 
 # Terminal 2
+cd backend
+source .venv/bin/activate
+uvicorn app.main:app --reload --port 8000
+
+# Terminal 3
 cd frontend
 pnpm dev
 ```
@@ -34,14 +39,15 @@ pnpm dev
 Local services:
 
 - App: `http://localhost:5173`
+- FastAPI: `http://localhost:8000` (`/docs` for OpenAPI UI)
 - Supabase Studio: `http://127.0.0.1:54323`
 - API: `http://127.0.0.1:54321`
 - Test email inbox: `http://127.0.0.1:54324`
 
-Use `pnpm db:reset` from `backend/` to recreate the database from migrations and `pnpm supabase:stop` to stop the containers. Add a Gemini API key to `backend/supabase/.env.local` before testing AI extraction or grading.
+Use `pnpm db:reset` from `backend/` to recreate the database from migrations and `pnpm supabase:stop` to stop the containers. See `backend/README.md` for Python installation and the required FastAPI environment variables.
 
 ## Current product slice
 
 The UI includes the student dashboard, question bank filters, custom practice builder, MCQ and typed-answer grading flows, AI grading rating/challenge UI, progress analytics, lessons and syllabus updates, leaderboard privacy, and an admin PDF extraction/review workflow.
 
-The backend includes the normalized MVP data model, access policies, private upload buckets, account profile creation, configurable plans, and separate Gemini workflows for paper extraction and answer grading.
+The backend includes the normalized MVP data model, access policies, private upload buckets, account profile creation, configurable plans, and authenticated FastAPI Gemini workflows for paper extraction and answer grading.

@@ -25,9 +25,3 @@ enable_signup = true
 [storage]
 enabled = true
 file_size_limit = "50MiB"
-
-[functions.extract-paper]
-verify_jwt = true
-
-[functions.grade-submission]
-verify_jwt = true
