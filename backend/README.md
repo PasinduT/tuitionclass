@@ -1,4 +1,4 @@
-# Pahas backend
+# Tuition Class backend
 
 The backend combines a FastAPI service with Supabase. Supabase owns Postgres, row-level security, Storage, and Auth; FastAPI owns the authenticated Gemini paper-extraction and answer-grading workflows.
 

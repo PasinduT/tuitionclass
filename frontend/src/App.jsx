@@ -31,7 +31,7 @@ function Logo() {
       <Sparkles size={21} strokeWidth={2.4} />
       <span className="absolute -bottom-2 -right-2 h-5 w-5 rounded-full bg-sun" />
     </div>
-    <div><p className="font-display text-xl font-extrabold leading-none tracking-tight">pahas</p><p className="mt-1 text-[10px] font-bold uppercase tracking-[.18em] text-slate-400">Learn with clarity</p></div>
+    <div><p className="font-display text-xl font-extrabold leading-none tracking-tight">Tuition Class</p><p className="mt-1 text-[10px] font-bold uppercase tracking-[.18em] text-slate-400">Learn with clarity</p></div>
   </div>
 }
 
@@ -63,7 +63,7 @@ function Header({ setOpen }) {
   const navigate = useNavigate()
   const titles = { '/': 'Overview', '/practice': 'Practice', '/progress': 'My progress', '/learn': 'Learning library', '/leaderboard': 'Leaderboard', '/admin': 'Admin workspace' }
   return <header className="sticky top-0 z-30 flex h-[76px] items-center justify-between border-b border-black/[.05] bg-paper/90 px-4 backdrop-blur-xl sm:px-8 lg:px-10">
-    <div className="flex items-center gap-3"><button className="rounded-xl p-2 hover:bg-white lg:hidden" onClick={() => setOpen(true)}><Menu size={21} /></button><h1 className="font-display text-lg font-bold">{location.pathname.startsWith('/assessment') ? 'Quick practice' : titles[location.pathname] || 'Pahas'}</h1></div>
+    <div className="flex items-center gap-3"><button className="rounded-xl p-2 hover:bg-white lg:hidden" onClick={() => setOpen(true)}><Menu size={21} /></button><h1 className="font-display text-lg font-bold">{location.pathname.startsWith('/assessment') ? 'Quick practice' : titles[location.pathname] || 'Tuition Class'}</h1></div>
     <div className="flex items-center gap-2 sm:gap-4">
       <div className="hidden items-center gap-2 rounded-full bg-orange-50 px-3 py-2 text-sm font-bold text-orange-600 sm:flex"><Flame size={18} fill="currentColor" />{student.streak} day streak</div>
       <button className="relative rounded-full border border-black/[.07] bg-white p-2.5 text-slate-500 hover:text-ink"><Bell size={19} /><span className="absolute right-2 top-2 h-2 w-2 rounded-full bg-coral ring-2 ring-white" /></button>
@@ -122,7 +122,7 @@ export default function App() {
   if (!authReady) return <div className="grid min-h-screen place-items-center bg-paper text-sm font-bold text-slate-400">Checking your session…</div>
   if (supabase && !session && location.pathname !== '/login') return <Navigate to="/login" replace />
   if (supabase && session && location.pathname === '/login') return <Navigate to="/" replace />
-  if (location.pathname === '/login') return <Suspense fallback={<div className="grid min-h-screen place-items-center bg-paper text-sm font-bold text-slate-400">Opening Pahas…</div>}><Auth /></Suspense>
+  if (location.pathname === '/login') return <Suspense fallback={<div className="grid min-h-screen place-items-center bg-paper text-sm font-bold text-slate-400">Opening Tuition Class…</div>}><Auth /></Suspense>
   return <div className="min-h-screen bg-paper">
     <Sidebar open={sidebarOpen} setOpen={setSidebarOpen} />
     <div className="lg:pl-[268px]"><Header setOpen={setSidebarOpen} /><main className="mx-auto max-w-[1500px] p-4 sm:p-8 lg:p-10"><Suspense fallback={<div className="grid min-h-[60vh] place-items-center"><div className="flex items-center gap-3 text-sm font-bold text-slate-400"><span className="h-5 w-5 animate-spin rounded-full border-2 border-leaf-500 border-t-transparent"/>Opening your study space…</div></div>}><Routes><Route path="/" element={<Dashboard />} /><Route path="/practice" element={<Practice />} /><Route path="/assessment/:id" element={<Assessment />} /><Route path="/progress" element={<ProgressPage />} /><Route path="/learn" element={<Learn />} /><Route path="/leaderboard" element={<Leaderboard />} /><Route path="/admin" element={<Admin />} /></Routes></Suspense></main></div>

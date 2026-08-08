@@ -6,7 +6,7 @@ from app.routers.ai import router as ai_router
 
 
 app = FastAPI(
-    title="Pahas API",
+    title="Tuition Class API",
     version="0.1.0",
     description="Authenticated AI workflows for paper extraction and answer grading.",
 )

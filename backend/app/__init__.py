@@ -1,1 +1,1 @@
-"""Pahas FastAPI application package."""
+"""Tuition Class FastAPI application package."""

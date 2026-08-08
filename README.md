@@ -1,6 +1,6 @@
-# TuitionClass
+# Tuition Class
 
-Tuitionclass is a student-first Sri Lankan O/L Mathematics and Science practice platform. It turns past papers into focused practice, gives fast feedback, tracks topic mastery, and keeps progress playful.
+Tuition Class is a student-first Sri Lankan O/L Mathematics and Science practice platform. It turns past papers into focused practice, gives fast feedback, tracks topic mastery, and keeps progress playful.
 
 ## Project layout
 
